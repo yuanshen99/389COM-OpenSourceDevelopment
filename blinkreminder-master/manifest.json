@@ -1,0 +1,32 @@
+{
+
+  "manifest_version": 2,
+  "name": "Blink Reminder",
+  "version": "0.1.0",
+
+  "description": "Reminds the user to blink and look away from the monitor regularly to prevent eye stain and dry eye.",
+
+  "background": {
+    "scripts": ["options.js", "main.js"]
+  },
+  "permissions": ["idle", "alarms", "notifications", "storage"],
+  "options_ui": {
+    "page": "options.html"
+  },
+  "icons":{
+    "32": "icons/eye-open32.png",
+    "64": "icons/eye-open64.png",
+    "128": "icons/eye-open128.png",
+    "256": "icons/eye-open256.png"
+  },
+  "browser_action":{
+    "browser-style": true,
+    "default_icon":{
+      "32": "icons/eye-open32.png",
+      "64": "icons/eye-open64.png",
+      "128": "icons/eye-open128.png",
+      "256": "icons/eye-open256.png"
+    },
+    "default_title": "BlinkReminder settings"
+  }
+}
