@@ -1,0 +1,31 @@
+{
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{9ed7d361-ccd9-4cad-9846-977da2651fb5}"
+    }
+  },
+
+  "manifest_version": 2,
+  "name": "automaticDark - Time-Based Theme Changer",
+  "version": "1.2.1",
+  "homepage_url": "https://github.com/skhzhang/time-based-themes/",
+  "description": "Automatically change Firefox's theme based on the time",
+
+  "icons": {
+  },
+
+  "permissions": [
+    "alarms",
+    "management",
+    "storage"
+  ],
+
+  "background": {
+    "scripts": ["js/utils.js", "js/common.js", "js/background.js", "lib/suncalc.js"]
+  },
+
+  "options_ui": {
+      "page": "html/options.html",
+      "open_in_tab": true
+  }
+}
