@@ -1,4 +1,0 @@
-*.js
-web-ext-artifacts/*
-node_modules/*
-setup_environment.sh
