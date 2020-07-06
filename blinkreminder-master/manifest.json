@@ -20,7 +20,7 @@
     "256": "icons/eye-open256.png"
   },
   "browser_action":{
-    //"browser-style": true,
+    "browser-style": true,
     "default_icon":{
       "32": "icons/eye-open32.png",
       "64": "icons/eye-open64.png",
