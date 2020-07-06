@@ -27,6 +27,10 @@ let DEFAULT_NIGHTTIME_THEME = "";
 // Things to do when the extension is starting up
 // (or if the settings have been reset).
 function init() {
+    //toolbar to open options page
+    browser.browserAction.onClicked.addListener((tab) => {
+        browser.runtime.openOptionsPage()
+});
     //console.log("automaticDark DEBUG: Starting up automaticDark");
     browser.runtime.onInstalled.addListener(extensionUpdated);
 
@@ -129,6 +133,9 @@ function init() {
             }
         }, onError);
 }
+
+
+
 
 // Changes the current theme.
 // Takes a parameter indicating how to decide what theme to change to.

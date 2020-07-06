@@ -85,8 +85,8 @@ browser.management.getAll().then((extensions) => {
         }, onError);
 });
 
-getChangeMode();
 
+getChangeMode();
 function getChangeMode() {
     return browser.storage.local.get(CHANGE_MODE_KEY)
         .then((obj) => {
