@@ -12,14 +12,19 @@
   "description": "Automatically change Firefox's theme based on the time",
 
   "icons": {
+    "48": "icons/beasts-48.png"
   },
 
   "permissions": [
     "alarms",
     "management",
-    "storage"
+    "storage",
+    "activeTab"
   ],
 
+  "browser_action": {
+    "default_icon": "icons/beasts-32.png",
+  },
   "background": {
     "scripts": ["js/utils.js", "js/common.js", "js/background.js", "lib/suncalc.js"]
   },
