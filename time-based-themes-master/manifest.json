@@ -22,11 +22,12 @@
   ],
 
   "browser_action": {
-    "default_icon": "icons/dark-32.png"
+    "default_icon": "icons/dark-32.png",
+    "default_popup": "popup/index.html"
   },
 
   "background": {
-    "scripts": ["js/utils.js", "js/common.js", "js/background.js", "lib/suncalc.js"]
+    "scripts": ["js/index.js","js/utils.js", "js/common.js", "js/background.js", "lib/suncalc.js"]
   },
 
   "options_ui": {

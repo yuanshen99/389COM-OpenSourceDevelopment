@@ -13,7 +13,7 @@ const NEXT_SUNSET_ALARM_NAME = KEY_PREFIX + "nextSunset";
 
 const GEOLOCATION_LATITUDE_KEY = KEY_PREFIX + "geoLatitude";
 const GEOLOCATION_LONGITUDE_KEY = KEY_PREFIX + "geoLongitude";
-
+const GEOLOCATION_RETRIEVE_TIME = "";
 const DEFAULT_CHANGE_MODE = "manual-suntimes";
 const DEFAULT_CHECK_TIME_STARTUP_ONLY = false;
 const DEFAULT_SUNRISE_TIME = "08:00";
@@ -28,9 +28,6 @@ let DEFAULT_NIGHTTIME_THEME = "";
 // (or if the settings have been reset).
 function init() {
     //toolbar to open options page
-    browser.browserAction.onClicked.addListener((tab) => {
-        browser.runtime.openOptionsPage()
-});
     //console.log("automaticDark DEBUG: Starting up automaticDark");
     browser.runtime.onInstalled.addListener(extensionUpdated);
 
@@ -342,8 +339,9 @@ function setGeolocation() {
             navigator.geolocation.getCurrentPosition((position) => {
                     setStorage({
                         [GEOLOCATION_LATITUDE_KEY]: {latitude: position.coords.latitude},
-                        [GEOLOCATION_LONGITUDE_KEY]: {longitude: position.coords.longitude}
-                    })
+                        [GEOLOCATION_LONGITUDE_KEY]: {longitude: position.coords.longitude},
+                        [GEOLOCATION_RETRIEVE_TIME]: {time: new Date(Date.now())}
+                    }, true)
                     .then(() => {
                         resolve(); 
                     });
@@ -357,9 +355,11 @@ function setGeolocation() {
 // Calculate the next sunrise/sunset times
 // based on today's date,.tomorrow's date, and geolocation in storage.
 function calculateSuntimes() {
-    return browser.storage.local.get([GEOLOCATION_LATITUDE_KEY, GEOLOCATION_LONGITUDE_KEY])
-        .then((position) => {
 
+    return browser.storage.local.get([GEOLOCATION_LATITUDE_KEY, GEOLOCATION_LONGITUDE_KEY, GEOLOCATION_RETRIEVE_TIME])
+        .then((position) => {
+            console.log(position[GEOLOCATION_LATITUDE_KEY].latitude);
+            console.log(position[GEOLOCATION_RETRIEVE_TIME].time);
             // Prepare today and tomorrow's date for calculations.
             let today = new Date(Date.now());
             let tomorrow =  new Date(Date.now());
@@ -372,11 +372,10 @@ function calculateSuntimes() {
                     // Do the calculations using SunCalc.
                     // Figure out today and tomorrow's sunrise/sunset times.
                     SunCalc.getTimes(date, 
-                        position[GEOLOCATION_LATITUDE_KEY].latitude, 
+                        position[GEOLOCATION_LATITUDE_KEY].latitude,
                         position[GEOLOCATION_LONGITUDE_KEY].longitude)
                 );
             });
-
             let now = new Date(Date.now());
             let nextSunrise = new Date(results[0].sunrise);
             let nextSunset = new Date(results[0].sunset);
