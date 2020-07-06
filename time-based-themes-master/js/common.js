@@ -343,7 +343,7 @@ function setGeolocation() {
                         [GEOLOCATION_RETRIEVE_TIME]: {time: new Date(Date.now())}
                     }, true)
                     .then(() => {
-                        resolve(); 
+                        resolve();
                     });
                 }, () => {
                 reject("Unable to fetch current location.");
@@ -358,8 +358,7 @@ function calculateSuntimes() {
 
     return browser.storage.local.get([GEOLOCATION_LATITUDE_KEY, GEOLOCATION_LONGITUDE_KEY, GEOLOCATION_RETRIEVE_TIME])
         .then((position) => {
-            console.log(position[GEOLOCATION_LATITUDE_KEY].latitude);
-            console.log(position[GEOLOCATION_RETRIEVE_TIME].time);
+            //console.log(position[GEOLOCATION_RETRIEVE_TIME].time);
             // Prepare today and tomorrow's date for calculations.
             let today = new Date(Date.now());
             let tomorrow =  new Date(Date.now());
