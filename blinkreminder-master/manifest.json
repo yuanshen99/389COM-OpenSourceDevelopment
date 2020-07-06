@@ -10,9 +10,12 @@
     "scripts": ["options.js", "main.js"]
   },
   "permissions": ["idle", "alarms", "notifications", "storage"],
+  
   "options_ui": {
     "page": "options.html"
+	
   },
+  
   "icons":{
     "32": "icons/eye-open32.png",
     "64": "icons/eye-open64.png",
