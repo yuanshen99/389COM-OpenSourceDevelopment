@@ -1,23 +1,24 @@
 html, body {
-    width: 100px;
+    width: 350px;
+
 }
 
 .hidden {
     display: none;
 }
 
-.button {
-    margin: 3% auto;
-    padding: 4px;
-    text-align: center;
-    font-size: 1.5em;
+
+
+.options{
+    float:right;
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
     cursor: pointer;
+    outline: inherit;
 }
-
-.options {
-    background-color: #FBFBC9;
-}
-
 .options:hover {
-    background-color: #EAEA9D;
+    background-color: rgba(73, 56, 36, 0.26);
 }
