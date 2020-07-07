@@ -132,8 +132,10 @@ function init() {
 }
 
 
-
-
+//capitalize each firstletter
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 // Changes the current theme.
 // Takes a parameter indicating how to decide what theme to change to.
 function changeThemes(mode) {
