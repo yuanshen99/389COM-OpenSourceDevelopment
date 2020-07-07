@@ -17,7 +17,7 @@ a {
 }
 div#container {
   width: 270px;
-    padding-right: 10px;
+  margin: auto;
 }
 form#options-form {
     margin: auto;
@@ -84,8 +84,9 @@ button:hover {
   position:relative;
   margin:auto;
 }
-#container {
+#clockContainer {
   margin: auto;
+  cursor: pointer;
 }
 #clockFace {
   stroke-width: 2px;
