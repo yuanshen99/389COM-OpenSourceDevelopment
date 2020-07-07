@@ -9,7 +9,7 @@ options.addEventListener("click",
         browser.runtime.openOptionsPage();
 
         return browser.storage.local.get([GEOLOCATION_LATITUDE_KEY, GEOLOCATION_LONGITUDE_KEY, GEOLOCATION_RETRIEVE_TIME])
-            .then((position) = > {
+            .then((position) => {
             time.innerHTML = "Location last updated time:" + position[GEOLOCATION_RETRIEVE_TIME].time;
 
         //call weather api
@@ -18,8 +18,7 @@ options.addEventListener("click",
         let request = new XMLHttpRequest();
         request.open("GET", 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lan + '&appid=e55f37ddf75aa5c1f80c356fad572961&units=metric');
         request.send();
-        request.onload = () =
-        >
+        request.onload = () =>
         {
             console.log(request);
             if (request.status == 200) {
@@ -32,10 +31,7 @@ options.addEventListener("click",
             }
         }
         //
-
-    })
-        ;
+    });
     }
 );
-
 //

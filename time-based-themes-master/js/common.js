@@ -352,13 +352,15 @@ function setGeolocation() {
     });
 }
 
+
 // Calculate the next sunrise/sunset times
 // based on today's date,.tomorrow's date, and geolocation in storage.
 function calculateSuntimes() {
 
     return browser.storage.local.get([GEOLOCATION_LATITUDE_KEY, GEOLOCATION_LONGITUDE_KEY, GEOLOCATION_RETRIEVE_TIME])
         .then((position) => {
-            //console.log(position[GEOLOCATION_RETRIEVE_TIME].time);
+            //getapi(position[GEOLOCATION_LATITUDE_KEY].latitude,position[GEOLOCATION_LONGITUDE_KEY].longitude);
+            console.log(position[GEOLOCATION_RETRIEVE_TIME].time);
             // Prepare today and tomorrow's date for calculations.
             let today = new Date(Date.now());
             let tomorrow =  new Date(Date.now());
