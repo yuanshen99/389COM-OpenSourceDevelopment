@@ -4,6 +4,12 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="pomodoro.css"/>
+      <style>
+          fieldset {
+              background-color: #eeeeee;
+              width: 220px;
+          }
+      </style>
   </head>
 
 <body>
@@ -14,7 +20,13 @@
           <label for="streakTimer">Streak duration: <span id="streakTimer_value"></span> minutes</label>
           <input id="streakTimer" min="1" max="90" value="30" type="range">
           <label for="pauseTimer">Break duration: <span id="pauseTimer_value"></span> minutes</label>
-          <input id="pauseTimer" min="1" max="90" value="5" type="range">  
+          <input id="pauseTimer" min="1" max="90" value="5" type="range">
+
+          <fieldset>
+              <legend> Current Task:  </legend>
+              <div id ="currentTask"> hello here is my new task how is it </div>
+          </fieldset>
+          <br/>
 
           <button id="startBtn">Start!</button>
           <button id="skipBtn">Skip</button>

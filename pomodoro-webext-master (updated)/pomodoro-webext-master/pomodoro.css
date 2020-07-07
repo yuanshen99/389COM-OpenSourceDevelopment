@@ -16,8 +16,9 @@ a {
   text-decoration: none;
 }
 div#container {
-  width: 270px;
-  margin: auto;
+    width: 270px;
+    margin: auto;
+    padding-right: 10px;
 }
 form#options-form {
     margin: auto;
