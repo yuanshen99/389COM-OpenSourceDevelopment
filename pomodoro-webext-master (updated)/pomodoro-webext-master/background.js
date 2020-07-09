@@ -142,7 +142,7 @@ const clock = {
             chrome.alarms.create("minutes", { "delayInMinutes": 1, "periodInMinutes": 1 });
     
             try {
-                let text = (clock.onABreak ? "Time for a " + minutes + " min break" : "Ready for a new " + minutes + " min streak?");
+                let text = (clock.onABreak ? "Time for a " + minutes + " min break\nTask to continue after break: " + localStorage.task + "" : "Ready for a new " + minutes + " min streak?\n\nTask to do: " + localStorage.task +"");
                 let notifDetail = {
                     type: "basic",
                     title: "Ding!",
