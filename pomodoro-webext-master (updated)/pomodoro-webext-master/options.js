@@ -24,6 +24,7 @@ const restoreOptions = () => {
     }
     document.getElementById("volume_value").innerHTML = context["volume"];
     document.getElementById("volume").value = context["volume"];
+    //fetch back the task inserted
     document.getElementById("taskText").value = localStorage.task;
     context.showMinutes = (localStorage.showMinutes === true || localStorage.showMinutes === "true" || localStorage.showMinutes === undefined);
     document.getElementById("showMinutes").checked = context.showMinutes;
@@ -99,6 +100,7 @@ const saveOptions = (evt) => {
             context.customSoundData = "";
             context.customSoundFilename = "";
         }
+        //get the value inserted into textbox and set it to local storage to display in popup screen and notifications
         context.task = document.getElementById("taskText").value
         localStorage.task = context.task;
         localStorage.customSoundData = context.customSoundData;

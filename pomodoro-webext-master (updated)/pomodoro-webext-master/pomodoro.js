@@ -80,6 +80,7 @@ window.onload = () => {
         document.getElementById("pauseTimer_value").innerHTML = evt.target.value;
     };
     document.getElementById("config").addEventListener("click", clock.openOptions);
+    //display the task
     document.getElementById("currentTask").innerHTML = localStorage.task;
     document.getElementById("streakTimer").dispatchEvent(new Event("input"));
     document.getElementById("pauseTimer").dispatchEvent(new Event("input"));
