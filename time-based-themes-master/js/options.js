@@ -157,6 +157,7 @@ manualSuntimesRadio.addEventListener("input", function(event) {
         browser.storage.local.set({[CHANGE_MODE_KEY]: {mode: "manual-suntimes"}});
         sunriseInput.disabled = false;
         sunsetInput.disabled = false;
+        browser.storage.local.remove([GEOLOCATION_LATITUDE_KEY, GEOLOCATION_LONGITUDE_KEY, GEOLOCATION_RETRIEVE_TIME]),
         changeThemes("manual-suntimes");
     }
 });
@@ -166,6 +167,7 @@ sysThemeRadio.addEventListener("input", function(event) {
         browser.storage.local.set({[CHANGE_MODE_KEY]: {mode: "system-theme"}});
         sunriseInput.disabled = true;
         sunsetInput.disabled = true;
+        browser.storage.local.remove([GEOLOCATION_LATITUDE_KEY, GEOLOCATION_LONGITUDE_KEY, GEOLOCATION_RETRIEVE_TIME]),
         changeThemes("system-theme");
     }
 });

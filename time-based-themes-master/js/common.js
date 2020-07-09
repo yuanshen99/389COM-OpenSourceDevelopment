@@ -27,7 +27,7 @@ let DEFAULT_NIGHTTIME_THEME = "";
 // Things to do when the extension is starting up
 // (or if the settings have been reset).
 function init() {
-    //toolbar to open options page
+
     //console.log("automaticDark DEBUG: Starting up automaticDark");
     browser.runtime.onInstalled.addListener(extensionUpdated);
 

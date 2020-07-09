@@ -7,6 +7,7 @@ let cityname = document.getElementById("location");
 let description = document.getElementById("description");
 let temp = document.getElementById("temp");
 let time = document.getElementById("time");
+let updatelocation = document.getElementById("updatelocation");
 
 
 window.addEventListener('load', (event) => {
@@ -32,11 +33,10 @@ else if (ext.type === "theme") {
     document.getElementsByTagName("body")[0].className = "day";
 }
 })
-
     return browser.storage.local.get([GEOLOCATION_LATITUDE_KEY, GEOLOCATION_LONGITUDE_KEY, GEOLOCATION_RETRIEVE_TIME])
         .then((position) => {
         time.innerHTML = "Location last updated: " + position[GEOLOCATION_RETRIEVE_TIME].time;
-
+        updatelocation.style.visibility = "visible";
 //call weather api
 var lat = position[GEOLOCATION_LATITUDE_KEY].latitude;
 var lan = position[GEOLOCATION_LONGITUDE_KEY].longitude;

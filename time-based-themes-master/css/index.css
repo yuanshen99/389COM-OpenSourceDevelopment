@@ -44,3 +44,8 @@ html, body {
 .options:hover {
     background-color: rgba(73, 56, 36, 0.26);
 }
+
+.updatelocation {
+    visibility: hidden;
+    float:left;
+}
