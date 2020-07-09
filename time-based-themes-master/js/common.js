@@ -75,7 +75,6 @@ function init() {
                         browser.storage.local.get(CHANGE_MODE_KEY)
                             .then((obj) => {
                                 changeThemes(obj[CHANGE_MODE_KEY].mode);
-
                                 if (obj[CHANGE_MODE_KEY].mode === "location-suntimes" || obj[CHANGE_MODE_KEY].mode === "manual-suntimes"){
                                     browser.alarms.clearAll();
                                     createAlarm(SUNRISE_TIME_KEY, NEXT_SUNRISE_ALARM_NAME, 60 * 24),
@@ -131,11 +130,11 @@ function init() {
         }, onError);
 }
 
-
 //capitalize each firstletter
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
 // Changes the current theme.
 // Takes a parameter indicating how to decide what theme to change to.
 function changeThemes(mode) {
@@ -353,8 +352,6 @@ function setGeolocation() {
         }
     });
 }
-
-
 // Calculate the next sunrise/sunset times
 // based on today's date,.tomorrow's date, and geolocation in storage.
 function calculateSuntimes() {

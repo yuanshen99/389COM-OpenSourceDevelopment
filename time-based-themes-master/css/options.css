@@ -37,3 +37,6 @@ a.no-style, .night a.no-style {
     color: inherit;
     text-decoration: inherit;
 }
+.updatelocation {
+    visibility: hidden;
+}

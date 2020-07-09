@@ -18,6 +18,8 @@ let resetDefaultBtn = document.getElementById("reset-default-btn");
 let sunriseInputEvent = new Event("input");
 let sunsetInputEvent = new Event("input");
 
+let updatelocation = document.getElementById("updatelocation")
+
 /*
 // Log everything stored.
 browser.storage.local.get(null)
@@ -30,6 +32,9 @@ browser.storage.local.get(null)
 
 // Darken the page theme if the current theme is 
 // Firefox's default dark theme.
+//update location
+
+
 browser.management.get("firefox-compact-dark@mozilla.org")
     .then((extInfo) => {
         if (extInfo.enabled) {
@@ -96,6 +101,7 @@ function getChangeMode() {
                 sysThemeRadio.checked = false;
                 sunriseInput.disabled = true;
                 sunsetInput.disabled = true;
+                updatelocation.style.visibility = "visible";
             }
             else if (obj[CHANGE_MODE_KEY].mode === "manual-suntimes") {
                 automaticSuntimesRadio.checked = false;
@@ -137,11 +143,11 @@ automaticSuntimesRadio.addEventListener("input", function(event) {
                         browser.storage.local.set({[CHANGE_MODE_KEY]: {mode: "location-suntimes"}});
                         sunriseInput.disabled = true;
                         sunsetInput.disabled = true;
-
                         sunriseInput.value = convertDateToString(suntimes.nextSunrise);
                         sunsetInput.value = convertDateToString(suntimes.nextSunset);
                         sunriseInput.dispatchEvent(sunriseInputEvent);
                         sunsetInput.dispatchEvent(sunsetInputEvent);
+                        updatelocation.style.visibility = "visible";
                     });
                 }, (error) => {
                     onError(error);
@@ -151,10 +157,26 @@ automaticSuntimesRadio.addEventListener("input", function(event) {
                 });
     }
 });
-
+//updatelocation
+updatelocation.addEventListener("click", function(event){
+    return setGeolocation()
+            .then(() => {
+            // Calculate sunrise/sunset times based on location.
+            calculateSuntimes().then((suntimes) => {
+    sunriseInput.value = convertDateToString(suntimes.nextSunrise);
+    sunsetInput.value = convertDateToString(suntimes.nextSunset);
+    sunriseInput.dispatchEvent(sunriseInputEvent);
+    sunsetInput.dispatchEvent(sunsetInputEvent);
+});
+}, (error) => {
+        onError(error);
+        changeThemes("location-theme");
+    });
+});
 manualSuntimesRadio.addEventListener("input", function(event) {
     if (manualSuntimesRadio.checked) {
-        browser.storage.local.set({[CHANGE_MODE_KEY]: {mode: "manual-suntimes"}});
+        browser.storage.local.set({[CHANGE_MODE_KEY]: {mode: "manual-suntimes"}})
+        updatelocation.style.visibility = "hidden";
         sunriseInput.disabled = false;
         sunsetInput.disabled = false;
         browser.storage.local.remove([GEOLOCATION_LATITUDE_KEY, GEOLOCATION_LONGITUDE_KEY, GEOLOCATION_RETRIEVE_TIME]),
@@ -168,6 +190,7 @@ sysThemeRadio.addEventListener("input", function(event) {
         sunriseInput.disabled = true;
         sunsetInput.disabled = true;
         browser.storage.local.remove([GEOLOCATION_LATITUDE_KEY, GEOLOCATION_LONGITUDE_KEY, GEOLOCATION_RETRIEVE_TIME]),
+            updatelocation.style.visibility = "hidden";
         changeThemes("system-theme");
     }
 });
