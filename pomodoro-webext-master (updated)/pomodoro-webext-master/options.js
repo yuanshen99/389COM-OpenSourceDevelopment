@@ -24,7 +24,7 @@ const restoreOptions = () => {
     }
     document.getElementById("volume_value").innerHTML = context["volume"];
     document.getElementById("volume").value = context["volume"];
-
+    document.getElementById("taskText").value = localStorage.task;
     context.showMinutes = (localStorage.showMinutes === true || localStorage.showMinutes === "true" || localStorage.showMinutes === undefined);
     document.getElementById("showMinutes").checked = context.showMinutes;
 
@@ -99,6 +99,8 @@ const saveOptions = (evt) => {
             context.customSoundData = "";
             context.customSoundFilename = "";
         }
+        context.task = document.getElementById("taskText").value
+        localStorage.task = context.task;
         localStorage.customSoundData = context.customSoundData;
         localStorage.customSoundFilename = context.customSoundFilename;
         window.location.reload(true);
