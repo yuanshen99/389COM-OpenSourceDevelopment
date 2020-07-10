@@ -41,7 +41,7 @@ class Translate {
     return formattedResult;
   }
 
-  sendRequest(word, sourceLang, targetLang) {
+  sendRequest(word, sourceLang, targetLang) { //send api request here
     const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLang}&tl=${targetLang}&dt=t&dt=bd&dj=1&q=${encodeURIComponent(
       word
     )}`;
