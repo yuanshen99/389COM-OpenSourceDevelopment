@@ -155,6 +155,7 @@ function inputText() {
   clearTimeout(inputTimer);
   inputTimer = setTimeout(() => {
     runTranslation();
+    document.getElementById("searchResult").innerHTML = ""; //clear the result previous search
   }, waitTime);
 }
 

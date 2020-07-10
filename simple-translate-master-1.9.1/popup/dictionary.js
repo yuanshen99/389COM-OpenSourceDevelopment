@@ -24,7 +24,7 @@ buttondic.addEventListener("click",
             if (request.status == 200) {
 
                 var data = JSON.parse(request.response);
-                if(data[0].shortdef.length < 1){//check there are definition from response
+                if(data[0].shortdef === undefined || data[0].shortdef.length < 1  ){//check there are definition from response
                     searchResult.innerHTML = "Definition: no meaning found"; //return no result found found
                 }else{
                     searchResult.innerHTML = "Defenition: " + data[0].shortdef;
