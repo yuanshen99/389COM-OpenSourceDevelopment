@@ -25,7 +25,13 @@ const restoreOptions = () => {
     document.getElementById("volume_value").innerHTML = context["volume"];
     document.getElementById("volume").value = context["volume"];
     //fetch back the task inserted
-    document.getElementById("taskText").value = localStorage.task;
+    if (localStorage.task == undefined) {
+        document.getElementById("taskText").innerHTML = "Please set a task here";
+    }
+    else {
+        document.getElementById("taskText").innerHTML = localStorage.task;
+    }
+
     context.showMinutes = (localStorage.showMinutes === true || localStorage.showMinutes === "true" || localStorage.showMinutes === undefined);
     document.getElementById("showMinutes").checked = context.showMinutes;
 

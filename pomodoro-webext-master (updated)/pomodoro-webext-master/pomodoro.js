@@ -81,7 +81,12 @@ window.onload = () => {
     };
     document.getElementById("config").addEventListener("click", clock.openOptions);
     //display the task
-    document.getElementById("currentTask").innerHTML = localStorage.task;
+    if (localStorage.task == undefined) {
+        document.getElementById("currentTask").innerHTML = "Please set a task in settings";
+    }
+else {
+        document.getElementById("currentTask").innerHTML = localStorage.task;
+    }
     document.getElementById("streakTimer").dispatchEvent(new Event("input"));
     document.getElementById("pauseTimer").dispatchEvent(new Event("input"));
     document.getElementById("startBtn").onclick = () => { if (!clock.ticking) { clock.start(); } else { clock.reset(); } };
