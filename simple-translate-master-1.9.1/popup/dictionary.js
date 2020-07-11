@@ -27,7 +27,7 @@ buttondic.addEventListener("click",
                 if(data[0].shortdef === undefined || data[0].shortdef.length < 1  ){//check there are definition from response
                     searchResult.innerHTML = "Definition: no meaning found"; //return no result found found
                 }else{
-                    searchResult.innerHTML = "Defenition: " + data[0].shortdef;
+                    searchResult.innerHTML = "Definition: " + data[0].shortdef;
                 } //this 1 fetches the definition
 
             }
