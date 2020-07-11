@@ -39,6 +39,20 @@ const restoreOptions = () => {
         document.getElementById("clockBackground").value = localStorage.clockColor;
     }
 
+    if (localStorage.clockMinutesColor == undefined) {
+        localStorage.clockMinutesColor = "#ffffff";
+    }
+    else {
+        document.getElementById("clockMinutesHand").value = localStorage.clockMinutesColor;
+    }
+
+    if (localStorage.clockSecondsColor == undefined) {
+        localStorage.clockSecondsColor = "#81B5A1";
+    }
+    else {
+        document.getElementById("clockSecondsHand").value = localStorage.clockSecondsColor;
+    }
+
 
     context.showMinutes = (localStorage.showMinutes === true || localStorage.showMinutes === "true" || localStorage.showMinutes === undefined);
     document.getElementById("showMinutes").checked = context.showMinutes;
@@ -121,6 +135,14 @@ const saveOptions = (evt) => {
         //get the color and save to local storage
         context.clockColor = document.getElementById("clockBackground").value;
         localStorage.clockColor = context.clockColor;
+
+        //get the minutes hand color and save to local storage
+        context.clockMinutesColor = document.getElementById("clockMinutesHand").value;
+        localStorage.clockMinutesColor = context.clockMinutesColor;
+
+        //get the seconds hand color and save to local storage
+        context.clockSecondsColor = document.getElementById("clockSecondsHand").value;
+        localStorage.clockSecondsColor = context.clockSecondsColor;
 
         localStorage.customSoundData = context.customSoundData;
         localStorage.customSoundFilename = context.customSoundFilename;

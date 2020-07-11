@@ -84,7 +84,7 @@ window.onload = () => {
     if (localStorage.task == undefined) {
         document.getElementById("currentTask").innerHTML = "Please set a task in settings";
     }
-else {
+    else {
         document.getElementById("currentTask").innerHTML = localStorage.task;
     }
 
@@ -94,6 +94,23 @@ else {
     else {
         document.getElementById("clock").style.fill = localStorage.clockColor;
     }
+
+    //set clock minutes hand color to be default color, if color was set previously, retrieve color
+    if (localStorage.clockMinutesColor == null) {
+        document.getElementById("clockHandMinutes").style.stroke = "#ffffff"
+    }
+    else {
+        document.getElementById("clockHandMinutes").style.stroke = localStorage.clockMinutesColor;
+    }
+
+    //set clock seconds color to be default color, if color was set previously, retrieve color
+    if (localStorage.clockSecondsColor == null) {
+        document.getElementById("clockHandSeconds").style.stroke = "#81B5A1"
+    }
+    else {
+        document.getElementById("clockHandSeconds").style.stroke = localStorage.clockSecondsColor;
+    }
+
 
     document.getElementById("streakTimer").dispatchEvent(new Event("input"));
     document.getElementById("pauseTimer").dispatchEvent(new Event("input"));
