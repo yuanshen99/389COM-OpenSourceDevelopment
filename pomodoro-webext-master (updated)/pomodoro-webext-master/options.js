@@ -32,6 +32,14 @@ const restoreOptions = () => {
         document.getElementById("taskText").innerHTML = localStorage.task;
     }
 
+    if (localStorage.clockColor == undefined) {
+        localStorage.clockColor = "#000000";
+    }
+    else {
+        document.getElementById("clockBackground").value = localStorage.clockColor;
+    }
+
+
     context.showMinutes = (localStorage.showMinutes === true || localStorage.showMinutes === "true" || localStorage.showMinutes === undefined);
     document.getElementById("showMinutes").checked = context.showMinutes;
 
@@ -109,6 +117,11 @@ const saveOptions = (evt) => {
         //get the value inserted into textbox and set it to local storage to display in popup screen and notifications
         context.task = document.getElementById("taskText").value
         localStorage.task = context.task;
+
+        //get the color and save to local storage
+        context.clockColor = document.getElementById("clockBackground").value;
+        localStorage.clockColor = context.clockColor;
+
         localStorage.customSoundData = context.customSoundData;
         localStorage.customSoundFilename = context.customSoundFilename;
         window.location.reload(true);

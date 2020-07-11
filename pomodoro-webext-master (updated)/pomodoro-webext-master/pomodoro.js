@@ -87,6 +87,14 @@ window.onload = () => {
 else {
         document.getElementById("currentTask").innerHTML = localStorage.task;
     }
+
+    if (localStorage.clockColor == null) {
+        document.getElementById("clock").style.fill = "#000000"
+    }
+    else {
+        document.getElementById("clock").style.fill = localStorage.clockColor;
+    }
+
     document.getElementById("streakTimer").dispatchEvent(new Event("input"));
     document.getElementById("pauseTimer").dispatchEvent(new Event("input"));
     document.getElementById("startBtn").onclick = () => { if (!clock.ticking) { clock.start(); } else { clock.reset(); } };
